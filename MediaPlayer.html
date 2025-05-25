@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 文件输入 -->
+<input id="input" type="file" accept="video/mp4">
+<br><br>
+<!-- 视频播放器 -->
+<video id="videoPlayer" controls>
+<source id="videoSource" type="video/mp4">
+</video>
+
+<script>
+// 监听文件输入变化
+document.getElementById('input').addEventListener('change', function(event) {
+const file = event.target.files[0]; // 获取选择的文件
+if (file) {
+const videoSource = document.getElementById('videoSource');
+const videoPlayer = document.getElementById('videoPlayer');
+
+// 创建文件的 URL 并设置到视频播放器
+const fileURL = URL.createObjectURL(file);
+videoSource.src = fileURL;
+videoPlayer.load(); // 重新加载视频
+}
+});
+</script>
+</body>
+</html>
